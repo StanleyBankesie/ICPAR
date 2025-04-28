@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-montserrat text-gray-800 leading-relaxed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-cormorant font-semibold leading-tight text-primary-900;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply mb-4;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-block px-6 py-3 rounded-md font-medium transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-primary-800 text-white hover:bg-fuchsia-950;
+  }
+
+  .btn-gold {
+    @apply bg-gold-500 text-white hover:bg-gold-600;
+  }
+
+  .section {
+    @apply py-12 md:py-20;
+  }
+
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
+  }
+
+  .page-title {
+    @apply font-cormorant text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4;
+  }
+
+  .page-subtitle {
+    @apply text-lg md:text-xl text-center text-gray-600 max-w-3xl mx-auto mb-12;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
+  }
+
+  .nav-link {
+    @apply px-4 py-2 text-gray-700 hover:text-primary-700 font-medium;
+  }
+
+  .nav-link-active {
+    @apply text-primary-700 font-semibold;
+  }
+}
+
+.carousel .control-dots .dot {
+  box-shadow: none !important;
+  background: #4a266a !important;
+  opacity: 0.5;
+}
+
+.carousel .control-dots .dot.selected {
+  opacity: 1;
+}
