@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, Search } from "lucide-react";
+//import { Link } from "react-router-dom";
+import { Calendar, Search } from "lucide-react";
 import PageBanner from "../components/common/PageBanner";
 import axios from "axios";
 
@@ -151,16 +151,9 @@ const PressReleasePage: React.FC = () => {
                           {release.title}
                         </h2>
                         <p className="text-gray-700 mb-4">{release.excerpt}</p>
-
-                        <Link
-                          to={`/press/${release._id}`}
-                          className="inline-flex items-center text-primary-700 font-medium hover:text-primary-800"
-                        >
-                          Read Full Release{" "}
-                          <ArrowRight size={16} className="ml-1" />
-                        </Link>
                       </div>
                     </div>
+                    i
                   </div>
                 ))}
               </div>

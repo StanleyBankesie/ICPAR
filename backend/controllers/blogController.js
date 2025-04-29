@@ -2,14 +2,16 @@ const Blog = require("../models/blog");
 
 const createBlog = async (req, res) => {
   try {
-    const { title, content, imageUrl } = req.body;
-    if (!title || !content || !imageUrl) {
+    const { title, content, imageUrl, date, category } = req.body;
+    if (!title || !content || !imageUrl || !date || !category) {
       return res.status(402).json({ message: "All fields are required" });
     }
     const newBlog = newBlog({
       title,
       content,
       imageUrl,
+      date,
+      category,
     });
     await Blog.create(newBlog);
     return res.status(201).json({ message: "Blog added" });
