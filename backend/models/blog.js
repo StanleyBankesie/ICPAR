@@ -5,7 +5,7 @@ const blogSchema = new mongoose.Schema({
     type: String,
   },
   content: {
-    type: String
+    type: String,
   },
   imageUrl: {
     type: String,

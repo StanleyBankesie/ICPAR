@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import PageBanner from "../components/common/PageBanner";
 import SectionTitle from "../components/common/SectionTitle";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+//import { io, Socket } from 'socket.io-client';
+//import axios from 'axios';
 
 // ✅ Define a proper type for gallery items
 type GalleryItem = {
@@ -14,6 +16,7 @@ type GalleryItem = {
 };
 
 // Sample gallery data
+
 const galleryItems: GalleryItem[] = [
   {
     id: 1,

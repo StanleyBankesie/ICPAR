@@ -8,7 +8,7 @@ const UploadBlog = () => {
 
   const handleUpload = async () => {
     try {
-      await axios.post("http://localhost:5000/api/blogs/create", {
+      await axios.post("http://localhost:5000/api/create/blog", {
         title,
         content,
         imageUrl,

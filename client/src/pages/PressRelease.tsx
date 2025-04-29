@@ -1,84 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, Search } from "lucide-react";
 import PageBanner from "../components/common/PageBanner";
-//import SectionTitle from '../components/common/SectionTitle';
+import axios from "axios";
 
-// Sample press releases data - in a real application, this would come from an API or CMS
-const pressReleases = [
-  {
-    id: 1,
-    title: "ICPAR Announces Global Prayer Initiative",
-    date: "May 15, 2025",
-    category: "Initiative",
-    excerpt:
-      "The International Council of the Prophetic Apostolic Roundtable has launched a worldwide prayer initiative focused on unity and spiritual revival across nations.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.",
-    imageUrl:
-      "https://images.pexels.com/photos/6699291/pexels-photo-6699291.jpeg?auto=compress&cs=tinysrgb&w=1280",
-  },
-  {
-    id: 2,
-    title: "Annual Leadership Summit to be Held in Jerusalem",
-    date: "April 30, 2025",
-    category: "Event",
-    excerpt:
-      "ICPAR will host its annual leadership summit in Jerusalem this fall, gathering spiritual leaders from over 50 nations to discuss prophetic guidance for global challenges.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.",
-    imageUrl:
-      "https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=1280",
-  },
-  {
-    id: 3,
-    title: "New Regional Chapters Established in Africa and Asia",
-    date: "April 12, 2025",
-    category: "Expansion",
-    excerpt:
-      "ICPAR is proud to announce the establishment of new regional chapters in Kenya, Nigeria, India, and the Philippines to strengthen our global prophetic network.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.",
-    imageUrl:
-      "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1280",
-  },
-  {
-    id: 4,
-    title: "ICPAR Releases Prophetic Outlook for 2025-2026",
-    date: "March 20, 2025",
-    category: "Publication",
-    excerpt:
-      "The council has published its annual prophetic outlook document, highlighting key spiritual trends, warnings, and promises for the coming year.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.",
-    imageUrl:
-      "https://images.pexels.com/photos/3760790/pexels-photo-3760790.jpeg?auto=compress&cs=tinysrgb&w=1280",
-  },
-  {
-    id: 5,
-    title: "Statement on Recent Global Conflicts",
-    date: "March 5, 2025",
-    category: "Statement",
-    excerpt:
-      "The ICPAR executive council releases an official statement addressing recent global conflicts and calling for prayer, reconciliation, and prophetic intervention.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.",
-    imageUrl:
-      "https://images.pexels.com/photos/6590920/pexels-photo-6590920.jpeg?auto=compress&cs=tinysrgb&w=1280",
-  },
-  {
-    id: 6,
-    title: "New Prophetic Training Curriculum Released",
-    date: "February 15, 2025",
-    category: "Education",
-    excerpt:
-      "ICPAR unveils its updated prophetic training curriculum, now available in 15 languages, designed to develop accurate and accountable prophetic ministry.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl nec ultricies ultricies, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.",
-    imageUrl:
-      "https://images.pexels.com/photos/5905900/pexels-photo-5905900.jpeg?auto=compress&cs=tinysrgb&w=1280",
-  },
-];
+interface PressRelease {
+  _id: string;
+  title: string;
+  date: string;
+  category: string;
+  excerpt: string;
+  content: string;
+  imageUrl: string;
+}
 
 const categories = [
   "All",
@@ -91,8 +25,22 @@ const categories = [
 ];
 
 const PressReleasePage: React.FC = () => {
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [selectedCategory, setSelectedCategory] = React.useState("All");
+  const [pressReleases, setPressReleases] = useState<PressRelease[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  useEffect(() => {
+    const fetchPressReleases = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/blogs");
+        setPressReleases(response.data);
+      } catch (error) {
+        console.error("Failed to fetch press releases:", error);
+      }
+    };
+
+    fetchPressReleases();
+  }, []);
 
   const filteredReleases = pressReleases.filter((release) => {
     const matchesSearch =
@@ -177,7 +125,7 @@ const PressReleasePage: React.FC = () => {
               <div className="space-y-10">
                 {filteredReleases.map((release) => (
                   <div
-                    key={release.id}
+                    key={release._id}
                     className="border-b border-gray-200 pb-10"
                   >
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -194,7 +142,7 @@ const PressReleasePage: React.FC = () => {
                             {release.category}
                           </span>
                           <span className="inline-flex items-center text-gray-500 text-sm">
-                            <Calendar size={14} className="mr-1" />{" "}
+                            <Calendar size={14} className="mr-1" />
                             {release.date}
                           </span>
                         </div>
@@ -205,7 +153,7 @@ const PressReleasePage: React.FC = () => {
                         <p className="text-gray-700 mb-4">{release.excerpt}</p>
 
                         <Link
-                          to={`/press/${release.id}`}
+                          to={`/press/${release._id}`}
                           className="inline-flex items-center text-primary-700 font-medium hover:text-primary-800"
                         >
                           Read Full Release{" "}

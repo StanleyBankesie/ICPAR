@@ -1,18 +1,13 @@
 const mongoose = require("mongoose");
 
 const mediaSchema = new mongoose.Schema({
-  title: {
-    type: String
-  },
   type: {
-    type: String
+    type: String,
   },
   url: {
     type: String,
   },
-  description: {
-    type: String
-  },
+
   createdAt: {
     type: Date,
     default: Date.now,
