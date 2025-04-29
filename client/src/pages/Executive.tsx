@@ -1,6 +1,11 @@
 import React from "react";
 import PageBanner from "../components/common/PageBanner";
 import SectionTitle from "../components/common/SectionTitle";
+import president from "../asset/president.jpg";
+import vice from "../asset/vice_president.jpg";
+import helena from "../asset/apostle_helena.jpg";
+import mark from "../asset/mark.jpg";
+import hubert from "../asset/hubert.jpg";
 
 // Sample executive members data
 const executives = [
@@ -10,8 +15,7 @@ const executives = [
     title: "President and General Overseer",
 
     bio: "lorem250 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image:
-      "https://images.pexels.com/photos/5384445/pexels-photo-5384445.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: president,
     country: "Liberia",
   },
   {
@@ -19,17 +23,15 @@ const executives = [
     name: "Rev (Wo 1 rtd) Dzorvakpor Joseph",
     title: "Director/ In-charge of Security and Sierra Leone chapter of ICPAR",
     bio: "lorem25 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image:
-      "https://images.pexels.com/photos/5384445/pexels-photo-5384445.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: vice,
     country: "Ghana",
   },
   {
     id: 3,
-    name: " Apostol ( Dr.) Helena Sarpai--Nunoo",
+    name: " Apostle ( Dr.) Helena Sarpai--Nunoo",
     title: "Secretary General, (In-charge of USA Chapter of ICPAR)",
     bio: "lorem25 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image:
-      "https://images.pexels.com/photos/8090137/pexels-photo-8090137.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: helena,
     country: "Ghana",
   },
   {
@@ -37,8 +39,7 @@ const executives = [
     name: "Rev. Mark Brobbey",
     title: "Director of finance. (In-charge of Liberia Chapter of ICPAR)",
     bio: "lorem25 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image:
-      "https://images.pexels.com/photos/5225308/pexels-photo-5225308.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: mark,
     country: "Ghana",
   },
   {
@@ -55,8 +56,7 @@ const executives = [
     name: "Pastor (Dr.)Hubert Adane",
     title: "Director of Medical Affairs, ICPAR",
     bio: "lorem25 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image:
-      "https://images.pexels.com/photos/5384445/pexels-photo-5384445.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: hubert,
     country: "Canada",
   },
 ];
@@ -84,7 +84,7 @@ const ExecutivePage: React.FC = () => {
                   <img
                     src={executive.image}
                     alt={executive.name}
-                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                    className="w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
                 <div className="p-6">
