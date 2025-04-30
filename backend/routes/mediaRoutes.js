@@ -1,9 +1,16 @@
 const express = require("express");
 const mediaUpload = require("../middleware/upload");
-const addNewMedia = require("../controllers/mediaController");
+const {
+  addNewMedia,
+  fetchAllMedia,
+} = require("../controllers/mediaController");
+
 const router = express.Router();
 
-router.post("/media/upload", mediaUpload.single("image"), addNewMedia);
-// router.get("/media", getTemplates);
+// POST: Upload media
+router.post("/media/upload", mediaUpload.single("file"), addNewMedia);
+
+// GET: Fetch all media
+router.get("/media", fetchAllMedia);
 
 module.exports = router;
