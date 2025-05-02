@@ -72,10 +72,10 @@ const UploadBlog = () => {
         <option value="All">All</option>
         <option value="Event">Event</option>
         <option value="Education">Education</option>
-        <option value="Publication">Publication</option>
         <option value="Initiative">Initiative</option>
         <option value="Statement">Statement</option>
         <option value="Expansion">Expansion</option>
+        <option value="Publications">Publications</option>
       </select>
 
       <button

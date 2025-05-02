@@ -23,6 +23,7 @@ const mediaSchema = new mongoose.Schema(
         "Leadership",
         "Worship",
         "Outreach",
+        "Publications",
       ],
       required: true,
     },

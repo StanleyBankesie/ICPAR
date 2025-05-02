@@ -21,6 +21,7 @@ const categories = [
   "Leadership",
   "Worship",
   "Outreach",
+  "Publications",
 ];
 
 const GalleryPage: React.FC = () => {

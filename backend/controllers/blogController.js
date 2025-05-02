@@ -34,7 +34,12 @@ const createBlog = async (req, res) => {
 // Fetch all blogs
 const getAllBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find().sort({ createdAt: -1 }); // Newest first
+    const limit = parseInt(req.query.limit, 10);
+    let query = Blog.find().sort({ createdAt: -1 }); // Newest first
+    if (!isNaN(limit) && limit > 0) {
+      query = query.limit(limit);
+    }
+    const blogs = await query;
     res.status(200).json(blogs);
   } catch (error) {
     res.status(500).json({ message: "Error fetching blogs", error });

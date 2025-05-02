@@ -8,10 +8,12 @@ import PressReleasePage from "./pages/PressRelease";
 import StructurePage from "./pages/Structure";
 import GalleryPage from "./pages/Gallery";
 import AdminPage from "./pages/AdminPage";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">

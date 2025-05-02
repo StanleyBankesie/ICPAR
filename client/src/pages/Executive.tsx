@@ -1,11 +1,12 @@
 import React from "react";
 import PageBanner from "../components/common/PageBanner";
 import SectionTitle from "../components/common/SectionTitle";
-import president from "../asset/president.jpg";
-import vice from "../asset/vice_president.jpg";
+import president from "../asset/Waltar.jpg";
+import vice from "../asset/joseph.jpg";
 import helena from "../asset/apostle_helena.jpg";
 import mark from "../asset/mark.jpg";
 import hubert from "../asset/hubert.jpg";
+import adison from "../asset/adison.jpg";
 
 // Sample executive members data
 const executives = [
@@ -47,8 +48,7 @@ const executives = [
     name: "Apostle Edward Addison",
     title: "Director of Programme, (In-charge of Ghana Chapter of ICPAR)",
     bio: "lorem25 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image:
-      "https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: adison,
     country: "Ghana",
   },
   {
@@ -57,7 +57,7 @@ const executives = [
     title: "Director of Medical Affairs, ICPAR",
     bio: "lorem25 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     image: hubert,
-    country: "Canada",
+    country: "Ghana",
   },
 ];
 

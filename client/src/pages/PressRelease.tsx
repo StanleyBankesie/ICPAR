@@ -19,7 +19,7 @@ const categories = [
   "Initiative",
   "Event",
   "Expansion",
-  "Publication",
+  "Publications",
   "Statement",
   "Education",
 ];
@@ -28,6 +28,9 @@ const PressReleasePage: React.FC = () => {
   const [pressReleases, setPressReleases] = useState<PressRelease[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [expandedReleases, setExpandedReleases] = useState<{
+    [key: string]: boolean;
+  }>({});
 
   useEffect(() => {
     const fetchPressReleases = async () => {
@@ -51,6 +54,13 @@ const PressReleasePage: React.FC = () => {
 
     return matchesSearch && matchesCategory;
   });
+
+  const toggleExpand = (id: string) => {
+    setExpandedReleases((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   return (
     <div>
@@ -122,38 +132,47 @@ const PressReleasePage: React.FC = () => {
                 </p>
               </div>
             ) : (
-              <div className="space-y-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredReleases.map((release) => (
                   <div
                     key={release._id}
-                    className="border-b border-gray-200 pb-10"
+                    className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300"
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      <div className="md:col-span-1">
-                        <img
-                          src={release.imageUrl}
-                          alt={release.title}
-                          className="w-full h-48 object-cover rounded-lg"
-                        />
-                      </div>
-                      <div className="md:col-span-2">
-                        <div className="flex flex-wrap gap-3 mb-3">
-                          <span className="inline-block bg-primary-100 text-primary-800 text-xs font-medium px-2.5 py-0.5 rounded">
-                            {release.category}
-                          </span>
-                          <span className="inline-flex items-center text-gray-500 text-sm">
-                            <Calendar size={14} className="mr-1" />
-                            {release.date}
-                          </span>
-                        </div>
-
-                        <h2 className="text-2xl font-bold mb-3">
-                          {release.title}
-                        </h2>
-                        <p className="text-gray-700 mb-4">{release.excerpt}</p>
-                      </div>
+                    <div className="mb-4">
+                      <img
+                        src={release.imageUrl}
+                        alt={release.title}
+                        className="w-full h-48 object-cover rounded-lg"
+                      />
                     </div>
-                    i
+                    <div>
+                      <div className="flex flex-wrap gap-3 mb-3">
+                        <span className="inline-block bg-primary-100 text-primary-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                          {release.category}
+                        </span>
+                        <span className="inline-flex items-center text-gray-500 text-sm">
+                          <Calendar size={14} className="mr-1" />
+                          {release.date}
+                        </span>
+                      </div>
+
+                      <h2 className="text-2xl font-bold mb-3">
+                        {release.title}
+                      </h2>
+                      <p className="text-gray-700 mb-4">
+                        {expandedReleases[release._id]
+                          ? release.content
+                          : release.excerpt}
+                      </p>
+                      <button
+                        className="text-primary-600 hover:text-primary-800 font-semibold"
+                        onClick={() => toggleExpand(release._id)}
+                      >
+                        {expandedReleases[release._id]
+                          ? "Show Less"
+                          : "Read More"}
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>

@@ -5,6 +5,9 @@ const Media = require("../models/media");
 const addNewMedia = async (req, res) => {
   try {
     const file = req.file;
+
+    console.log("Uploaded file object:", file);
+
     const { title, category } = req.body; // Destructuring title and category
 
     if (!file) return res.status(400).json({ error: "No file selected" });
@@ -12,10 +15,33 @@ const addNewMedia = async (req, res) => {
       return res.status(400).json({ error: "Category is required" });
     if (!title) return res.status(400).json({ error: "Title is required" }); // Added check for title
 
+    // Validate category against allowed enum values
+    const allowedCategories = [
+      "Events",
+      "Training",
+      "Messages",
+      "Regional",
+      "Leadership",
+      "Worship",
+      "Outreach",
+      "Publications",
+    ];
+    if (!allowedCategories.includes(category)) {
+      return res.status(400).json({ error: "Invalid category" });
+    }
+
+    // Use file.path or file.secure_url or file.url depending on availability
+    const fileUrl = file.path || file.secure_url || file.url;
+    if (!fileUrl) {
+      return res
+        .status(500)
+        .json({ error: "Failed to get file URL from upload" });
+    }
+
     const newMedia = new Media({
       title: title, // Storing the title in the database
-      url: file.path || file.secure_url || file.url,
-      type: file.mimetype || file.resource_type,
+      url: fileUrl,
+      type: file.mimetype,
       category: category,
     });
 
@@ -25,8 +51,12 @@ const addNewMedia = async (req, res) => {
       media: newMedia,
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
+    const util = require("util");
+    console.error(
+      "Error in addNewMedia:",
+      util.inspect(error, { depth: null })
+    );
+    res.status(500).json({ error: error.message || "Internal Server Error" });
   }
 };
 

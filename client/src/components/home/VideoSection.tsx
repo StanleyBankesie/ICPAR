@@ -1,40 +1,78 @@
-import React from 'react';
-import { Play } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import SectionTitle from '../common/SectionTitle';
-import VideoPlayer from '../common/VideoPlayer';
+import React, { useEffect, useState } from "react";
+import { Play } from "lucide-react";
+import { Link } from "react-router-dom";
+import SectionTitle from "../common/SectionTitle";
+import VideoPlayer from "../common/VideoPlayer";
+import axios from "axios";
+
+type Video = {
+  id: string;
+  title: string;
+  videoSrc: string;
+  poster?: string;
+};
 
 const VideoSection: React.FC = () => {
-  // Sample videos - in a real application, these would come from a CMS or API
-  const featuredVideos = [
-    {
-      id: 1,
-      title: "Prophetic Vision for 2025",
-      videoSrc: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-      poster: "https://images.pexels.com/photos/3761509/pexels-photo-3761509.jpeg?auto=compress&cs=tinysrgb&w=1280"
-    },
-    {
-      id: 2,
-      title: "Apostolic Leadership Conference Highlights",
-      videoSrc: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-      poster: "https://images.pexels.com/photos/8047040/pexels-photo-8047040.jpeg?auto=compress&cs=tinysrgb&w=1280"
-    },
-    {
-      id: 3,
-      title: "Global Prayer Summit 2025",
-      videoSrc: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-      poster: "https://images.pexels.com/photos/7087668/pexels-photo-7087668.jpeg?auto=compress&cs=tinysrgb&w=1280"
-    }
-  ];
+  const [featuredVideos, setFeaturedVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/media");
+        // Filter videos with type including "video" and url ending with .mp4
+        const videos = response.data
+          .filter(
+            (item: { type: string; url: string }) =>
+              item.type.includes("video") && item.url.endsWith(".mp4")
+          )
+          .slice(0, 3)
+          .map((item: { _id: string; title?: string; url: string }) => ({
+            id: item._id,
+            title: item.title || "Untitled",
+            videoSrc: item.url,
+            poster: "", // No poster info available, can be added if exists
+          }));
+        setFeaturedVideos(videos);
+        setLoading(false);
+      } catch {
+        setError("Failed to load videos");
+        setLoading(false);
+      }
+    };
+
+    fetchVideos();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="section bg-gray-50">
+        <div className="container text-center">
+          <p>Loading videos...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="section bg-gray-50">
+        <div className="container text-center">
+          <p className="text-red-600">{error}</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="section bg-gray-50">
       <div className="container">
-        <SectionTitle 
-          title="Featured Videos" 
+        <SectionTitle
+          title="Featured Videos"
           subtitle="Watch our latest sermons, teachings, and spiritual insights from our leadership team."
         />
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {featuredVideos.map((video) => (
             <div key={video.id} className="aspect-video">
@@ -46,9 +84,12 @@ const VideoSection: React.FC = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-12 text-center">
-          <Link to="/gallery" className="btn btn-primary inline-flex items-center">
+          <Link
+            to="/gallery"
+            className="btn btn-primary inline-flex items-center"
+          >
             <Play size={18} className="mr-2" />
             View All Videos
           </Link>

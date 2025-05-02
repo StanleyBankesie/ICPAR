@@ -35,7 +35,7 @@ const UploadMedia = () => {
       setTitle(""); // Clear the title field after successful upload
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const errorMsg = error.response?.data?.message || error.message;
+        const errorMsg = error.response?.data?.error || error.message;
         console.error("Axios error:", errorMsg);
         setMessage(`Upload failed: ${errorMsg}`);
       } else {
@@ -86,6 +86,7 @@ const UploadMedia = () => {
         <option value="Leadership">Leadership</option>
         <option value="Worship">Worship</option>
         <option value="Outreach">Outreach</option>
+        <option value="Publications">Publications</option>
       </select>
 
       {file && (
