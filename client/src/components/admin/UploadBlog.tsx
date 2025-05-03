@@ -1,31 +1,53 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-const UploadBlog = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [date, setDate] = useState("");
-  const [category, setCategory] = useState("All");
+const UploadBlog: React.FC = () => {
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [datePublished, setDatePublished] = useState<string>("");
+  const [category, setCategory] = useState<string>("All");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    setImageFile(files && files.length > 0 ? files[0] : null);
+  };
 
   const handleUpload = async () => {
+    if (!title || !content || !imageFile || !datePublished || !category) {
+      alert("Please fill out all fields and select an image.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("image", imageFile);
+    formData.append("datePublished", datePublished);
+    formData.append("category", category);
+
     try {
-      await axios.post("http://localhost:5000/api/create/blog", {
-        title,
-        content,
-        imageUrl,
-        date,
-        category,
-      });
+      setLoading(true);
+      await axios.post(
+        "http://localhost:5000/api/create/blog",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       alert("Blog created!");
+      // reset form
       setTitle("");
       setContent("");
-      setImageUrl("");
-      setDate("");
+      setImageFile(null);
+      setDatePublished("");
       setCategory("All");
     } catch (err) {
       console.error(err);
       alert("Blog upload failed!");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,18 +72,23 @@ const UploadBlog = () => {
       />
 
       <input
-        type="text"
-        placeholder="Image URL"
-        className="block w-full mb-4 p-2 border rounded"
-        value={imageUrl}
-        onChange={(e) => setImageUrl(e.target.value)}
+        type="file"
+        accept="image/*"
+        onChange={handleFileChange}
+        className="block w-full mb-4 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200"
       />
+      {imageFile && (
+        <p className="text-sm text-gray-600 mb-4">
+          Selected file: {imageFile.name} ({Math.round(imageFile.size / 1024)}
+           KB)
+        </p>
+      )}
 
       <input
         type="date"
         className="block w-full mb-4 p-2 border rounded"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
+        value={datePublished}
+        onChange={(e) => setDatePublished(e.target.value)}
       />
 
       <select
@@ -80,9 +107,12 @@ const UploadBlog = () => {
 
       <button
         onClick={handleUpload}
-        className="bg-blue-600 text-white px-4 py-2 rounded"
+        disabled={loading}
+        className={`w-full py-2 rounded text-white ${
+          loading ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"
+        }`}
       >
-        Submit
+        {loading ? "Uploading…" : "Submit"}
       </button>
     </div>
   );

@@ -1,14 +1,10 @@
 const express = require("express");
-const { createBlog, getAllBlogs } = require("../controllers/blogController");
-const mediaUpload = require("../middleware/upload");
+const blogUpload = require("../middleware/upload.blog");
+const { addNewBlog, fetchAllBlogs } = require("../controllers/blogs.controller");
 
 const router = express.Router();
 
-router.post("/create/blog", mediaUpload.single("image"), createBlog);
+router.post("/create/blog", blogUpload.single("image"), addNewBlog);
 
-// router.get("/blog", getAllBlogs);
-
-// API route to fetch all blogs
-router.get("/blogs", getAllBlogs);
-
+router.get("/blogs", fetchAllBlogs);
 module.exports = router;

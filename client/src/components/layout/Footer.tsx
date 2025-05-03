@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Facebook,
   Twitter,
@@ -11,6 +11,10 @@ import {
 import Logo from "../common/Logo";
 
 const Footer = () => {
+  const location = useLocation();
+  if(location.pathname.includes("/admin")) {
+    return null;
+  }
   const currentYear = new Date().getFullYear();
 
   return (

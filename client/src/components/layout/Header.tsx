@@ -7,7 +7,10 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
-
+  const location = useLocation();
+  if(location.pathname.includes("/admin")){
+    return null
+  }
   const isActive = (path: string) => pathname === path;
 
   useEffect(() => {

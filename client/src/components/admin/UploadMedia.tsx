@@ -1,106 +1,92 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-const UploadMedia = () => {
-  const [file, setFile] = useState<File | null>(null);
-  const [category, setCategory] = useState<string>("Events");
+const UploadMedia: React.FC = () => {
   const [title, setTitle] = useState<string>("");
-  const [uploading, setUploading] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
+  const [file, setFile] = useState<File | null>(null);
+  const [category, setCategory] = useState<string>("All");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    setFile(files && files.length > 0 ? files[0] : null);
+  };
 
   const handleUpload = async () => {
-    if (!file || !title) {
-      setMessage("Please select a file and provide a title.");
+    if (!title || !file) {
+      alert("Please provide a title and select an image.");
       return;
     }
 
     const formData = new FormData();
-    formData.append("image", file); // must match multer.single("image")
     formData.append("title", title);
+    formData.append("image", file);
     formData.append("category", category);
 
     try {
-      setUploading(true);
-      setMessage("");
-
-      const response = await axios.post(
-        "http://localhost:5000/api/create/blog",
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-
-      setMessage("Blog created successfully!");
-      console.log("New blog:", response.data.blog);
-      setFile(null);
+      setLoading(true);
+      await axios.post("http://localhost:5000/api/media/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      alert("Media uploaded successfully!");
       setTitle("");
-    } catch (err: any) {
-      console.error("Upload error:", err.response || err.message);
-      const errMsg = err.response?.data?.message || err.message;
-      setMessage(`Upload failed: ${errMsg}`);
+      setFile(null);
+      setCategory("All");
+    } catch (err) {
+      console.error(err);
+      alert("Media upload failed!");
     } finally {
-      setUploading(false);
+      setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl border border-gray-200">
-      <h2 className="text-2xl font-semibold mb-4 text-center text-gray-700">
-        Create Blog Post
-      </h2>
+    <div className="mt-16 max-w-xl mx-auto p-6 bg-white rounded shadow">
+      <h2 className="text-2xl font-bold mb-4">Upload Media</h2>
+
+      <input
+        type="text"
+        placeholder="Title"
+        className="block w-full mb-4 p-2 border rounded"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
 
       <input
         type="file"
         accept="image/*"
-        onChange={(e) => setFile(e.target.files?.[0] || null)}
+        onChange={handleFileChange}
         className="block w-full mb-4 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200"
       />
+      {file && (
+        <p className="text-sm text-gray-600 mb-4">
+          Selected: {file.name} ({Math.round(file.size / 1024)} KB)
+        </p>
+      )}
 
-      <label className="block mb-2 text-sm font-medium text-gray-700">
-        Title
-      </label>
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Enter a title for the blog"
-        className="w-full mb-4 p-2 border border-gray-300 rounded-lg"
-      />
-
-      <label className="block mb-2 text-sm font-medium text-gray-700">
-        Category
-      </label>
       <select
+        className="block w-full mb-4 p-2 border rounded"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="w-full mb-4 p-2 border border-gray-300 rounded-lg"
       >
-        <option value="Events">Events</option>
-        <option value="Training">Training</option>
-        <option value="Messages">Messages</option>
-        <option value="Regional">Regional</option>
-        <option value="Leadership">Leadership</option>
-        <option value="Worship">Worship</option>
-        <option value="Outreach">Outreach</option>
+        <option value="All">All</option>
+        <option value="Event">Event</option>
+        <option value="Education">Education</option>
+        <option value="Initiative">Initiative</option>
+        <option value="Statement">Statement</option>
+        <option value="Expansion">Expansion</option>
         <option value="Publications">Publications</option>
       </select>
 
       <button
         onClick={handleUpload}
-        disabled={uploading || !file || !title}
-        className={`w-full py-2 px-4 rounded-lg text-white font-semibold transition ${
-          uploading
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-blue-600 hover:bg-blue-700"
+        disabled={loading}
+        className={`w-full py-2 rounded text-white ${
+          loading ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"
         }`}
       >
-        {uploading ? "Uploading..." : "Create Blog"}
+        {loading ? "Uploading…" : "Submit"}
       </button>
-
-      {message && (
-        <div className="mt-4 text-center text-sm text-gray-700">{message}</div>
-      )}
     </div>
   );
 };

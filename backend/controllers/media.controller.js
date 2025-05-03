@@ -1,14 +1,14 @@
-const blogsModel = require('../models/blogs.model.js')
+const mediaModel = require('../models/media.model.js')
 const fs = require("fs");
 const cloudinary = require("../config/cloudinary.js");
-const createBlog = async (req, res) => {
+const createMedia = async (req, res) => {
    const { title, category } = req.body;
   try {
     if (!title || !category) {
       return res.status(400).json({ message: "All fields are required" });
     }
  if (!req.file) {
-   return res.status(400).json({ message: "Please image" });
+   return res.status(400).json({ message: "Please select image" });
  }
 
  // Upload the image to Cloudinary
@@ -20,40 +20,40 @@ const createBlog = async (req, res) => {
      .json({ message: "Failed to upload image to Cloudinary" });
  }
 
-    const newBlog = {
+    const newMedia = {
       title,
       category,
       imageUrl: result.secure_url,
     };
-    console.log(newBlog)
+    console.log(newMedia)
   
-   const success =  await blogsModel.create(newBlog)
+   const success =  await mediaModel.create(newMedia)
    if(success){
-   return res.status(201).json({ message: "Blog added successfully" });
+   return res.status(201).json({ message: "Media uploaded successfully" });
    }
     
   } catch (error) {
-    console.error("Error saving blog:", error);
-    return res.status(500).json({ message: "Error saving blog", error });
+    console.error("Error saving media:", error);
+    return res.status(500).json({ message: "Error saving media", error });
   }
 };
 
 // Fetch all blogs
-const getAllBlogs = async (req, res) => {
+const getAllMedia = async (req, res) => {
   try {
     const limit = parseInt(req.query.limit, 10);
-    let query = Blog.find().sort({ createdAt: -1 }); // Newest first
+    let query = mediaModel.find().sort({ createdAt: -1 }); // Newest first
     if (!isNaN(limit) && limit > 0) {
       query = query.limit(limit);
     }
-    const blogs = await query;
-    res.status(200).json(blogs);
+    const media = await query;
+    res.status(200).json(media);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching blogs", error });
+    res.status(500).json({ message: "Error fetching media", error });
   }
 };
 
 module.exports = {
-  createBlog,
-  getAllBlogs,
+  createMedia,
+  getAllMedia,
 };
