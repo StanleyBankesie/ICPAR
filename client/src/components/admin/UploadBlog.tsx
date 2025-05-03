@@ -30,7 +30,7 @@ const UploadBlog: React.FC = () => {
     try {
       setLoading(true);
       await axios.post(
-        "http://localhost:5000/api/create/blog",
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/create/blog`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -79,8 +79,8 @@ const UploadBlog: React.FC = () => {
       />
       {imageFile && (
         <p className="text-sm text-gray-600 mb-4">
-          Selected file: {imageFile.name} ({Math.round(imageFile.size / 1024)}
-           KB)
+          Selected file: {imageFile.name} ({Math.round(imageFile.size / 1024)}{" "}
+          KB)
         </p>
       )}
 

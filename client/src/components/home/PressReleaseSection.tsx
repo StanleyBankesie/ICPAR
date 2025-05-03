@@ -21,7 +21,9 @@ const PressReleaseSection: React.FC = () => {
   useEffect(() => {
     const fetchPressReleases = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/blogs");
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/blogs`
+        );
         setPressReleases(response.data.slice(0, 3));
       } catch (error) {
         console.error("Failed to fetch press releases:", error);

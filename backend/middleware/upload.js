@@ -15,8 +15,7 @@ const storage = new CloudinaryStorage({
 });
 
 const mediaUpload = multer({
-  storage,
-  limits: { fileSize: 52428800 }, // 50MB file size limit
+  storage, // 50MB file size limit
 });
 
 module.exports = mediaUpload;
