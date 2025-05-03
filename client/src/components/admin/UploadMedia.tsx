@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 const UploadMedia: React.FC = () => {
   const [title, setTitle] = useState<string>("");
@@ -14,7 +14,7 @@ const UploadMedia: React.FC = () => {
 
   const handleUpload = async () => {
     if (!title || !file) {
-      alert("Please provide a title and select an image.");
+      alert("Please provide a title and select a media file (image or video).");
       return;
     }
 
@@ -33,8 +33,17 @@ const UploadMedia: React.FC = () => {
       setFile(null);
       setCategory("All");
     } catch (err) {
-      console.error(err);
-      alert("Media upload failed!");
+      const error = err as AxiosError<{ message: string }>;
+      console.error(error.response?.data);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        alert(error.response.data.message);
+      } else {
+        alert("Media upload failed!");
+      }
     } finally {
       setLoading(false);
     }
@@ -54,13 +63,14 @@ const UploadMedia: React.FC = () => {
 
       <input
         type="file"
-        accept="image/*"
+        accept="image/*,video/*"
         onChange={handleFileChange}
         className="block w-full mb-4 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200"
       />
       {file && (
         <p className="text-sm text-gray-600 mb-4">
-          Selected: {file.name} ({Math.round(file.size / 1024)} KB)
+          Selected: {file.name} ({Math.round(file.size / 1024)} KB) -{" "}
+          {file.type.startsWith("video") ? "Video" : "Image"}
         </p>
       )}
 

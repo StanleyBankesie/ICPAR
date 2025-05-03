@@ -10,6 +10,7 @@ type GalleryItem = {
   url: string;
   category: string;
   title?: string;
+  createdAt: string;
 };
 
 const categories = [
@@ -28,14 +29,23 @@ const GalleryPage: React.FC = () => {
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
   const [filter, setFilter] = useState("All");
   const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchMedia = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/media");
-        setGalleryItems(response.data);
+        console.log("Fetched media items:", response.data);
+        // Sort media by createdAt descending to show new media first
+        const sortedMedia = response.data.sort(
+          (a: GalleryItem, b: GalleryItem) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        setGalleryItems(sortedMedia);
+        setError(null);
       } catch (error) {
         console.error("Error fetching media:", error);
+        setError("Failed to fetch media items.");
       }
     };
     fetchMedia();
@@ -97,58 +107,66 @@ const GalleryPage: React.FC = () => {
             ))}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredItems.map((item) => (
-              <div
-                key={item._id}
-                className="card overflow-hidden group cursor-pointer"
-                onClick={() => openLightbox(item)}
-              >
-                {item.type.includes("image") ? (
-                  <div className="h-64 overflow-hidden">
-                    <img
-                      src={item.url}
-                      alt={item.title || ""}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
-                ) : (
-                  <div className="h-64 overflow-hidden relative">
-                    <video
-                      src={item.url}
-                      poster=""
-                      className="w-full h-full object-cover"
-                      muted
-                      autoPlay
-                      loop
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
-                      <div className="w-16 h-16 rounded-full bg-white bg-opacity-80 flex items-center justify-center">
-                        <svg
-                          className="w-8 h-8 text-primary-700"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                        </svg>
+            {error ? (
+              <p className="text-center text-red-500 col-span-full">{error}</p>
+            ) : filteredItems.length === 0 ? (
+              <p className="text-center text-gray-500 col-span-full">
+                No media items found.
+              </p>
+            ) : (
+              filteredItems.map((item) => (
+                <div
+                  key={item._id}
+                  className="card overflow-hidden group cursor-pointer"
+                  onClick={() => openLightbox(item)}
+                >
+                  {item.type?.includes("image") ? (
+                    <div className="h-64 overflow-hidden">
+                      <img
+                        src={item.url}
+                        alt={item.title || ""}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                  ) : (
+                    <div className="h-64 overflow-hidden relative">
+                      <video
+                        src={item.url}
+                        poster=""
+                        className="w-full h-full object-cover"
+                        muted
+                        autoPlay
+                        loop
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+                        <div className="w-16 h-16 rounded-full bg-white bg-opacity-80 flex items-center justify-center">
+                          <svg
+                            className="w-8 h-8 text-primary-700"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold">
-                    {item.title || "Untitled"}
-                  </h3>
-                  <div className="flex justify-between items-center mt-2">
-                    <span className="text-sm text-primary-700">
-                      {item.category}
-                    </span>
-                    <span className="text-sm text-gray-500">
-                      {item.type.includes("image") ? "Photo" : "Video"}
-                    </span>
+                  )}
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold">
+                      {item.title || "Untitled"}
+                    </h3>
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="text-sm text-primary-700">
+                        {item.category}
+                      </span>
+                      <span className="text-sm text-gray-500">
+                        {item.type?.includes("image") ? "Photo" : "Video"}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>
@@ -174,7 +192,7 @@ const GalleryPage: React.FC = () => {
             <ChevronRight size={40} />
           </button>
           <div className="max-w-6xl w-full mx-auto">
-            {lightboxItem.type.includes("image") ? (
+            {lightboxItem.type?.includes("image") ? (
               <img
                 src={lightboxItem.url}
                 alt={lightboxItem.title}

@@ -16,15 +16,15 @@ const blogSchema = new mongoose.Schema({
   imageUrl: {
     type: String,
   },
-    datePublished: { 
-      type: Date, 
-      required: true 
-    },
+  datePublished: {
+    type: Date,
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
 
-const blogModel = mongoose.model("media", blogSchema);
+const blogModel = mongoose.model("blogs", blogSchema);
 module.exports = blogModel;
