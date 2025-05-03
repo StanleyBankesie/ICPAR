@@ -1,30 +1,37 @@
-const Blog = require("../models/blog");
-
-// Create a new blog post
+const blogsModel = require('../models/blogs.model.js')
+const fs = require("fs");
+const cloudinary = require("../config/cloudinary.js");
 const createBlog = async (req, res) => {
+   const { title, category } = req.body;
   try {
-    const { title, content, imageUrl, date, category } = req.body;
-
-    console.log("Received blog data:", req.body);
-
-    if (!title || !content || !imageUrl || !date || !category) {
+    if (!title || !category) {
       return res.status(400).json({ message: "All fields are required" });
     }
+ if (!req.file) {
+   return res.status(400).json({ message: "Please image" });
+ }
 
-    // Process date to exclude timestamp (set time to 00:00:00)
+ // Upload the image to Cloudinary
+ const result = await cloudinary.uploader.upload(req.file.path)
 
-    const newBlog = new Blog({
+ if (!result || !result.secure_url) {
+   return res
+     .status(500)
+     .json({ message: "Failed to upload image to Cloudinary" });
+ }
+
+    const newBlog = {
       title,
-      content,
-      imageUrl,
-      date,
       category,
-    });
-
-    const savedBlog = await newBlog.save();
-    console.log("Saved blog document:", savedBlog);
-
-    return res.status(201).json({ message: "Blog added successfully" });
+      imageUrl: result.secure_url,
+    };
+    console.log(newBlog)
+  
+   const success =  await blogsModel.create(newBlog)
+   if(success){
+   return res.status(201).json({ message: "Blog added successfully" });
+   }
+    
   } catch (error) {
     console.error("Error saving blog:", error);
     return res.status(500).json({ message: "Error saving blog", error });

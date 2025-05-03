@@ -4,9 +4,9 @@ import axios from "axios";
 const UploadMedia = () => {
   const [file, setFile] = useState<File | null>(null);
   const [category, setCategory] = useState<string>("Events");
-  const [title, setTitle] = useState<string>(""); // New state for title
-  const [uploading, setUploading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [title, setTitle] = useState<string>("");
+  const [uploading, setUploading] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
 
   const handleUpload = async () => {
     if (!file || !title) {
@@ -15,33 +15,30 @@ const UploadMedia = () => {
     }
 
     const formData = new FormData();
-    formData.append("file", file); // Changed from "image" to "file" to match backend multer middleware
+    formData.append("image", file); // must match multer.single("image")
+    formData.append("title", title);
     formData.append("category", category);
-    formData.append("title", title); // Append the title to form data
 
     try {
       setUploading(true);
       setMessage("");
 
       const response = await axios.post(
-        "http://localhost:5000/api/media/upload",
-        formData
+        "http://localhost:5000/api/create/blog",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
       );
 
-      setMessage(
-        `Upload successful: ${response.data.filename || "File uploaded"}`
-      );
+      setMessage("Blog created successfully!");
+      console.log("New blog:", response.data.blog);
       setFile(null);
-      setTitle(""); // Clear the title field after successful upload
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        const errorMsg = error.response?.data?.error || error.message;
-        console.error("Axios error:", errorMsg);
-        setMessage(`Upload failed: ${errorMsg}`);
-      } else {
-        console.error("Unknown error:", error);
-        setMessage("An unexpected error occurred.");
-      }
+      setTitle("");
+    } catch (err: any) {
+      console.error("Upload error:", err.response || err.message);
+      const errMsg = err.response?.data?.message || err.message;
+      setMessage(`Upload failed: ${errMsg}`);
     } finally {
       setUploading(false);
     }
@@ -50,14 +47,14 @@ const UploadMedia = () => {
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl border border-gray-200">
       <h2 className="text-2xl font-semibold mb-4 text-center text-gray-700">
-        Upload Image or Video
+        Create Blog Post
       </h2>
 
       <input
         type="file"
-        accept="image/*,video/*"
+        accept="image/*"
         onChange={(e) => setFile(e.target.files?.[0] || null)}
-        className="block w-full mb-4 text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200"
+        className="block w-full mb-4 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200"
       />
 
       <label className="block mb-2 text-sm font-medium text-gray-700">
@@ -67,17 +64,17 @@ const UploadMedia = () => {
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full mb-4 p-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Enter a title for the media"
+        placeholder="Enter a title for the blog"
+        className="w-full mb-4 p-2 border border-gray-300 rounded-lg"
       />
 
       <label className="block mb-2 text-sm font-medium text-gray-700">
-        Select Category
+        Category
       </label>
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="w-full mb-4 p-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full mb-4 p-2 border border-gray-300 rounded-lg"
       >
         <option value="Events">Events</option>
         <option value="Training">Training</option>
@@ -89,12 +86,6 @@ const UploadMedia = () => {
         <option value="Publications">Publications</option>
       </select>
 
-      {file && (
-        <p className="text-sm text-gray-600 mb-2">
-          Selected file: <strong>{file.name}</strong>
-        </p>
-      )}
-
       <button
         onClick={handleUpload}
         disabled={uploading || !file || !title}
@@ -104,7 +95,7 @@ const UploadMedia = () => {
             : "bg-blue-600 hover:bg-blue-700"
         }`}
       >
-        {uploading ? "Uploading..." : "Upload"}
+        {uploading ? "Uploading..." : "Create Blog"}
       </button>
 
       {message && (
