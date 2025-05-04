@@ -2,6 +2,7 @@
   "name": "prophetic-apostolic-roundtable",
   "private": true,
   "version": "0.1.0",
+  "Homepage": ".",
   "type": "module",
   "scripts": {
     "dev": "vite",
