@@ -35,8 +35,18 @@ const PressReleasePage: React.FC = () => {
   useEffect(() => {
     const fetchPressReleases = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/blogs");
-        setPressReleases(response.data);
+        const response = await axios.get(
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/blogs`
+        );
+        console.log("Press releases response data:", response.data);
+        if (Array.isArray(response.data)) {
+          setPressReleases(response.data);
+        } else if (response.data.blogs && Array.isArray(response.data.blogs)) {
+          setPressReleases(response.data.blogs);
+        } else {
+          console.error("Unexpected data format for press releases");
+          setPressReleases([]);
+        }
       } catch (error) {
         console.error("Failed to fetch press releases:", error);
       }
