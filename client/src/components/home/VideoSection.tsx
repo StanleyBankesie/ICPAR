@@ -20,7 +20,9 @@ const VideoSection: React.FC = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/media");
+        const response = await axios.get(
+          "https://icpar-backend.vercel.app/api/media"
+        );
         // Filter videos with type including "video" and url ending with .mp4
         const videos = response.data
           .filter(

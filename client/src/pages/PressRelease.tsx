@@ -35,7 +35,9 @@ const PressReleasePage: React.FC = () => {
   useEffect(() => {
     const fetchPressReleases = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/blogs");
+        const response = await axios.get(
+          "https://icpar-backend.vercel.app/api/blogs"
+        );
         console.log("Press releases response data:", response.data);
         if (Array.isArray(response.data)) {
           setPressReleases(response.data);

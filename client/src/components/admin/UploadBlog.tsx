@@ -29,9 +29,13 @@ const UploadBlog: React.FC = () => {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:5000/api/create/blog", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      await axios.post(
+        "https://icpar-backend.vercel.app/api/create/blog",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       alert("Blog created!");
       // reset form
       setTitle("");

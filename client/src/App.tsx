@@ -7,7 +7,6 @@ import ExecutivePage from "./pages/Executive";
 import PressReleasePage from "./pages/PressRelease";
 import StructurePage from "./pages/Structure";
 import GalleryPage from "./pages/Gallery";
-import AdminPage from "./pages/AdminPage";
 import ScrollToTop from "./components/common/ScrollToTop";
 import UploadBlog from "./components/admin/UploadBlog";
 import UploadMedia from "./components/admin/UploadMedia";
@@ -26,8 +25,8 @@ function App() {
             <Route path="/press" element={<PressReleasePage />} />
             <Route path="/structure" element={<StructurePage />} />
             <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/admin/blog" element={<UploadBlog/>}/>
-            <Route path="/admin/media" element={<UploadMedia/>}/>
+            <Route path="/admin/blog" element={<UploadBlog />} />
+            <Route path="/admin/media" element={<UploadMedia />} />
           </Routes>
         </main>
         <Footer />
