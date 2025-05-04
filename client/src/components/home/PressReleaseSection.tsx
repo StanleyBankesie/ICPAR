@@ -22,7 +22,7 @@ const PressReleaseSection: React.FC = () => {
     const fetchPressReleases = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/blogs`
+          "https://icpar-backend.vercel.app/api/blogs"
         );
         if (Array.isArray(response.data)) {
           setPressReleases(response.data.slice(0, 3));
