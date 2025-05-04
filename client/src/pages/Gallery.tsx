@@ -34,9 +34,7 @@ const GalleryPage: React.FC = () => {
   useEffect(() => {
     const fetchMedia = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/media`
-        );
+        const response = await axios.get("http://localhost:5000/api/media");
         console.log("Fetched media items:", response.data);
         // Sort media by createdAt descending to show new media first
         const sortedMedia = response.data.sort(

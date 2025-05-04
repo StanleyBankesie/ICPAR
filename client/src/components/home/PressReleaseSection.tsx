@@ -24,9 +24,18 @@ const PressReleaseSection: React.FC = () => {
         const response = await axios.get(
           `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/blogs`
         );
-        setPressReleases(response.data.slice(0, 3));
+        if (Array.isArray(response.data)) {
+          setPressReleases(response.data.slice(0, 3));
+        } else {
+          console.error(
+            "Unexpected data format for press releases:",
+            response.data
+          );
+          setPressReleases([]);
+        }
       } catch (error) {
         console.error("Failed to fetch press releases:", error);
+        setPressReleases([]);
       }
     };
 

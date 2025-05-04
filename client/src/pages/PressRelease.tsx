@@ -35,9 +35,7 @@ const PressReleasePage: React.FC = () => {
   useEffect(() => {
     const fetchPressReleases = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/blogs`
-        );
+        const response = await axios.get("http://localhost:5000/api/blogs");
         console.log("Press releases response data:", response.data);
         if (Array.isArray(response.data)) {
           setPressReleases(response.data);

@@ -29,13 +29,9 @@ const UploadBlog: React.FC = () => {
 
     try {
       setLoading(true);
-      await axios.post(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/create/blog`,
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      await axios.post("http://localhost:5000/api/create/blog", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       alert("Blog created!");
       // reset form
       setTitle("");
