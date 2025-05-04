@@ -36,7 +36,7 @@ const PressReleasePage: React.FC = () => {
     const fetchPressReleases = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/blogs`
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/blogs`
         );
         console.log("Press releases response data:", response.data);
         if (Array.isArray(response.data)) {

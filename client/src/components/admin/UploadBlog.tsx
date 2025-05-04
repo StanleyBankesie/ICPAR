@@ -30,7 +30,7 @@ const UploadBlog: React.FC = () => {
     try {
       setLoading(true);
       await axios.post(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/create/blog`,
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/create/blog`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

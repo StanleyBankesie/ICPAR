@@ -26,7 +26,7 @@ const UploadMedia: React.FC = () => {
     try {
       setLoading(true);
       await axios.post(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/media/upload`,
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/media/upload`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
