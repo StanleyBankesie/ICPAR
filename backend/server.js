@@ -16,7 +16,7 @@ dotenv.config();
 
 // Middleware: CORS configuration
 const corsOptions = {
-  origin: "https://www.icpar.vercel.app",
+  origin: "https://icpar.vercel.app",
   methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
   credentials: true,
 };
@@ -26,7 +26,7 @@ app.options("*", cors(corsOptions));
 
 // Custom headers for preflight
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://www.icpar.vercel.app");
+  res.header("Access-Control-Allow-Origin", "https://icpar.vercel.app");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
   res.header(
     "Access-Control-Allow-Headers",
