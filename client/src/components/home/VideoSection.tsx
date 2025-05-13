@@ -38,7 +38,8 @@ const VideoSection: React.FC = () => {
           }));
         setFeaturedVideos(videos);
         setLoading(false);
-      } catch {
+      } catch (error) {
+        console.error("Error fetching videos:", error);
         setError("Failed to load videos");
         setLoading(false);
       }

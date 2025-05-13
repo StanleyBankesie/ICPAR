@@ -4,7 +4,8 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var indexRouter = require("../routes/index");
+const blogRoutes = require("../routes/blogRoutes");
+const mediaRoutes = require("../routes/mediaRoutes");
 
 var app = express();
 
@@ -36,6 +37,7 @@ const setContext = (req, res, next) => {
 };
 app.use(setContext);
 
-app.use("/", indexRouter);
+app.use("/api", blogRoutes);
+app.use("/api", mediaRoutes);
 
 module.exports = app;
