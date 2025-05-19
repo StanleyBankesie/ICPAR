@@ -135,7 +135,7 @@ const Footer = () => {
           {/* Resources */}
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white absolute botttom-0">
+            <h3 className="text-lg font-semibold mb-4 text-white">
               Contact Us
             </h3>
             <div className="space-y-4">
@@ -150,7 +150,9 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <Mail size={20} className="mr-2 text-gold-400" />
-                <p className="text-gray-300">12icpar7@gmail.com</p>
+                <p className="text-gray-300 absolute botttom-0">
+                  12icpar7@gmail.com
+                </p>
               </div>
             </div>
           </div>
