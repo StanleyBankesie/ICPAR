@@ -144,7 +144,7 @@ const Footer = () => {
                 <p className="text-gray-300">P.O.BOX TS 70 Teshie-Accra</p>
               </div>
               <div className="flex items-center">
-                <Phone size={20} className="mr-2 text-gold-400 mt-2" />
+                <Phone size={20} className="mr-2 text-gold-400 mt-0" />
                 <div>
                   <p className="text-gray-300 mb-0"> +1(612)481-9333</p>
                   <p className="text-gray-300">+233539956235</p>
