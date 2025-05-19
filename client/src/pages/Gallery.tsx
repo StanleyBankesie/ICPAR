@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import PageBanner from "../components/common/PageBanner";
 import SectionTitle from "../components/common/SectionTitle";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import axios from "axios";
+
+import api from "../api/api";
 
 type GalleryItem = {
   _id: string;
@@ -34,9 +35,7 @@ const GalleryPage: React.FC = () => {
   useEffect(() => {
     const fetchMedia = async () => {
       try {
-        const response = await axios.get(
-          "https://icpar-backend.vercel.app/api/media"
-        );
+        const response = await api.get("/media");
         console.log("Fetched media items:", response.data);
         // Sort media by createdAt descending to show new media first
         const sortedMedia = response.data.sort(

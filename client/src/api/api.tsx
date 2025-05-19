@@ -1,15 +1,10 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://consolbackend.vercel.app/api" });
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "https://icpar-backend.vercel.app/api";
 
-export const uploadItem = (data) => API.post("/add-course", data);
-export const fetchItems = () => API.get("/courses");
+const api = axios.create({
+  baseURL: API_BASE_URL,
+});
 
-export const uploadTemplate = (data) => API.post("/add-template", data);
-export const fetchTemplates = () => API.get("/templates");
-
-// Add fetchBlogs function to get all blogs (press releases)
-export const fetchBlogs = (limit) => {
-  const url = limit ? `/blogs?limit=${limit}` : "/blogs";
-  return API.get(url);
-};
+export default api;

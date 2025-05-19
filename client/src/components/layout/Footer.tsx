@@ -12,7 +12,7 @@ import Logo from "../common/Logo";
 
 const Footer = () => {
   const location = useLocation();
-  if(location.pathname.includes("/admin")) {
+  if (location.pathname.includes("/admin")) {
     return null;
   }
   const currentYear = new Date().getFullYear();
@@ -141,17 +141,16 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-start">
                 <MapPin size={20} className="mr-2 mt-1 text-gold-400" />
-                <p className="text-gray-300">
-                  123 Boundary Road, Teshie, Accra, Ghana
-                </p>
+                <p className="text-gray-300">P.O.BOX TS 70 Teshie-Accra</p>
               </div>
               <div className="flex items-center">
                 <Phone size={20} className="mr-2 text-gold-400" />
-                <p className="text-gray-300">+233 248764567</p>
+                <p className="text-gray-300">+233539956235 </p>
+                <p>+1(612)481-9333</p>
               </div>
               <div className="flex items-center">
                 <Mail size={20} className="mr-2 text-gold-400" />
-                <p className="text-gray-300">info@icpar.org</p>
+                <p className="text-gray-300">12icpar7@gmail.com</p>
               </div>
             </div>
           </div>
