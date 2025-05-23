@@ -193,17 +193,12 @@ const AboutUsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             <div className="p-6 bg-white rounded-lg shadow-md">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
-                <span className="text-3xl text-primary-700">1</span>
+              <div className=" bg-primary-100 rounded flex items-center justify-center mb-4">
+                <span className="text-3xl text-primary-700">Liberia</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">
                 Authentic Revelation
               </h3>
-              <p className="text-gray-600">
-                We value genuine prophetic insight that aligns with scripture
-                and carries the weight of divine authority rather than human
-                manipulation.
-              </p>
             </div>
 
             <div className="p-6 bg-white rounded-lg shadow-md">
