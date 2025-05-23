@@ -12,7 +12,7 @@ const locations = [
   { country: "USA", city: "New York", flag: "/flags/usa.png" },
 ];
 
-export default function GlobalPresence() {
+export default function Chapter() {
   return (
     <section className="bg-white py-12 px-6 md:px-16 lg:px-24 text-center">
       <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
