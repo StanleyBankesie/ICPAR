@@ -203,21 +203,21 @@ const AboutUsPage: React.FC = () => {
               </div>
             </div>
             <div>
-              <div className=" bg-primary-100 rounded-full flex items-center justify-center mb-8 shadow-md py-8 mx-10">
+              <div className=" bg-primary-100 rounded-full flex items-center justify-center mb-8 shadow-md py-8 px-2 mx-10">
                 <span className="text-2xl text-primary-700 text-center">
                   Ghana/Nigeria Chapter
                 </span>
               </div>
             </div>
             <div>
-              <div className=" bg-primary-100 rounded-full flex items-center justify-center mb-4 shadow-md py-8 mx-10">
+              <div className=" bg-primary-100 rounded-full flex items-center justify-center mb-4 shadow-md py-8 px-2 mx-10">
                 <span className="text-2xl text-primary-700 text-center">
                   Sierra Leone Chapter
                 </span>
               </div>
             </div>
             <div>
-              <div className=" bg-primary-100 rounded-full flex items-center justify-center mb-4 shadow-md py-8 mx-5">
+              <div className=" bg-primary-100 rounded-full flex items-center justify-center mb-4 shadow-md py-8 px-2 mx-5">
                 <span className="text-2xl text-primary-700">
                   USA/UK Chapter
                 </span>
