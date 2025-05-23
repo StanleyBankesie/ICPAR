@@ -192,7 +192,7 @@ const AboutUsPage: React.FC = () => {
           <SectionTitle title="ICPAR CHAPTERS" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            <div className=" bg-white rounded-lg shadow-md">
+            <div className="p-6 bg-white rounded-lg shadow-md">
               <div className=" bg-primary-100 rounded flex items-center justify-center mb-4">
                 <span className="text-3xl text-primary-700">Liberia</span>
               </div>
