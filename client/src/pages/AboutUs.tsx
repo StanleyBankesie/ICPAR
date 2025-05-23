@@ -193,14 +193,14 @@ const AboutUsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-20 mt-18">
             <div>
-              <div className=" text-3xl bg-primary-100 rounded-full flex items-center justify-center mb-4 shadow-md py-5">
+              <div className=" text-3xl bg-primary-100 rounded-full flex items-center justify-center mb-8 shadow-md py-10">
                 <span className="text-2xl text-primary-700 font-semibold">
                   Liberia Chapter
                 </span>
               </div>
             </div>
             <div>
-              <div className=" text-3xl bg-primary-100 rounded-full flex items-center justify-center mb-4 shadow-md py-5">
+              <div className=" text-3xl bg-primary-100 rounded-full flex items-center justify-center mb-8 shadow-md py-10">
                 <span className="text-2xl text-primary-700">
                   Ghana/Nigeria Chapter
                 </span>
