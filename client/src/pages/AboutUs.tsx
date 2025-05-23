@@ -189,7 +189,10 @@ const AboutUsPage: React.FC = () => {
       </section>
       <section className="section">
         <div className="container">
-          <SectionTitle title="ICPAR CHAPTERS" />
+          <SectionTitle
+            title="ICPAR CHAPTERS"
+            subtitle="We are united in faith across nations, bringing light and hope to communities around the world."
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-20 mt-18">
             <div>
