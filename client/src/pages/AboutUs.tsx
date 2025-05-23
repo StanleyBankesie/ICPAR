@@ -192,67 +192,33 @@ const AboutUsPage: React.FC = () => {
           <SectionTitle title="ICPAR CHAPTERS" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            <div className="p-6 bg-white rounded-lg shadow-md">
-              <div className=" bg-primary-100 rounded flex items-center justify-center">
-                <span className="text-3xl text-primary-700">Liberia</span>
-              </div>
-            </div>
-
             <div>
               <div className=" text-3xl bg-primary-100 rounded-full flex items-center justify-center mb-4 shadow-md py-5">
                 <span className="text-2xl text-primary-700">
                   Ghana/Nigeria Chapter
                 </span>
               </div>
-              <h3 className="text-xl font-semibold mb-3"></h3>
             </div>
-
-            <div className="p-6 bg-white rounded-lg shadow-md">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
-                <span className="text-3xl text-primary-700">3</span>
+            <div>
+              <div className=" text-3xl bg-primary-100 rounded-full flex items-center justify-center mb-4 shadow-md py-5">
+                <span className="text-2xl text-primary-700">
+                  Ghana/Nigeria Chapter
+                </span>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Servant Leadership</h3>
-              <p className="text-gray-600">
-                We believe that true apostolic authority is demonstrated through
-                sacrificial service rather than domination or control.
-              </p>
             </div>
-
-            <div className="p-6 bg-white rounded-lg shadow-md">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
-                <span className="text-3xl text-primary-700">4</span>
+            <div>
+              <div className=" text-3xl bg-primary-100 rounded-full flex items-center justify-center mb-4 shadow-md py-5">
+                <span className="text-2xl text-primary-700">
+                  Ghana/Nigeria Chapter
+                </span>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Global Unity</h3>
-              <p className="text-gray-600">
-                We champion unity within diversity, recognizing that the global
-                body of Christ expresses itself through various cultures,
-                traditions, and denominations.
-              </p>
             </div>
-
-            <div className="p-6 bg-white rounded-lg shadow-md">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
-                <span className="text-3xl text-primary-700">5</span>
+            <div>
+              <div className=" text-3xl bg-primary-100 rounded-full flex items-center justify-center mb-4 shadow-md py-5">
+                <span className="text-2xl text-primary-700">
+                  Ghana/Nigeria Chapter
+                </span>
               </div>
-              <h3 className="text-xl font-semibold mb-3">
-                Generational Transfer
-              </h3>
-              <p className="text-gray-600">
-                We are committed to mentoring and empowering the next generation
-                of prophetic and apostolic leaders through intentional
-                relationships and structured training.
-              </p>
-            </div>
-
-            <div className="p-6 bg-white rounded-lg shadow-md">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
-                <span className="text-3xl text-primary-700">6</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Kingdom Impact</h3>
-              <p className="text-gray-600">
-                We measure success not by organizational size but by
-                transformational influence in communities, cities, and nations.
-              </p>
             </div>
           </div>
         </div>
