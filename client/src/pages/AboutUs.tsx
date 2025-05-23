@@ -205,11 +205,6 @@ const AboutUsPage: React.FC = () => {
               <h3 className="text-xl font-semibold mb-3">
                 Ghana/Nigeria Chapter
               </h3>
-              <p className="text-gray-600">
-                We maintain the highest standards of personal character,
-                ministerial accountability, and ethical conduct in all our
-                affairs.
-              </p>
             </div>
 
             <div className="p-6 bg-white rounded-lg shadow-md">
