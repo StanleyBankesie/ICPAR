@@ -193,7 +193,7 @@ const AboutUsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             <div className="p-6 bg-white rounded-lg shadow-md">
-              <div className=" bg-primary-100 rounded flex items-center justify-center mb-4">
+              <div className=" bg-primary-100 rounded flex items-center justify-center">
                 <span className="text-3xl text-primary-700">Liberia</span>
               </div>
             </div>
