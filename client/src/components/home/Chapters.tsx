@@ -5,10 +5,10 @@ const Chapters = () => {
       <section className="section">
         <div className="container">
           <SectionTitle title="ICPAR CHAPTERS" />
-          <h2>
+          <h3>
             We are united in faith across nations, bringing light and hope to
             communities around the world.
-          </h2>
+          </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-20 mt-18">
             <div>
