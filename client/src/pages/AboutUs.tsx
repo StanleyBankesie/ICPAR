@@ -199,8 +199,8 @@ const AboutUsPage: React.FC = () => {
             </div>
 
             <div>
-              <div className=" text-3xl bg-primary-100 rounded-full flex items-center justify-center mb-4">
-                <span className="text-2xl text-primary-700 shadow-md">
+              <div className=" text-3xl bg-primary-100 rounded-full flex items-center justify-center mb-4 shadow-md">
+                <span className="text-2xl text-primary-700">
                   Ghana/Nigeria Chapter
                 </span>
               </div>
