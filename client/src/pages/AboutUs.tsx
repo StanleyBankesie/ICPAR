@@ -200,10 +200,10 @@ const AboutUsPage: React.FC = () => {
 
             <div className="p-6 bg-white rounded-lg shadow-md">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
-                <span className="text-3xl text-primary-700">2</span>
+                <span className="text-3xl text-primary-700">*</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">
-                Spiritual Integrity
+                Ghana/Nigeria Chapter
               </h3>
               <p className="text-gray-600">
                 We maintain the highest standards of personal character,
