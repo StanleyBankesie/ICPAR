@@ -190,7 +190,7 @@ const AboutUsPage: React.FC = () => {
       <section className="section">
         <div className="container">
           <SectionTitle
-            title="ICPAR CHAPTERS"
+            title="ICPAR Chapters"
             subtitle="We are united in faith across nations, bringing light and hope to communities around the world."
           />
 
