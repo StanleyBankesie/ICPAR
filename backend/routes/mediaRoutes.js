@@ -11,7 +11,7 @@ const uploadMiddleware = (req, res, next) => {
       console.error("Upload error:", err);
       return res
         .status(400)
-        .json({ message: "Upload failed", error: err.message });
+        .json({ message: "test Upload failed", error: err.message });
     }
     next();
   });
