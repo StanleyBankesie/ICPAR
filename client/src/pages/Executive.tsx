@@ -14,8 +14,6 @@ const executives = [
     id: 1,
     name: "Apostle Prophet Amos Walter Zor",
     title: "President and General Overseer",
-
-    bio: "lorem250 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     image: president,
     country: "Liberia",
   },
@@ -23,7 +21,6 @@ const executives = [
     id: 2,
     name: "Rev (Wo 1 rtd) Dzorvakpor Joseph",
     title: "Director/ In-charge of Security and Sierra Leone chapter of ICPAR",
-    bio: "lorem25 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     image: vice,
     country: "Ghana",
   },
@@ -31,7 +28,6 @@ const executives = [
     id: 3,
     name: " Apostle ( Dr.) Helena Sarpai--Nunoo",
     title: "Secretary General, (In-charge of USA Chapter of ICPAR)",
-    bio: "lorem25 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     image: helena,
     country: "Ghana",
   },
@@ -39,7 +35,6 @@ const executives = [
     id: 4,
     name: "Rev. Mark Brobbey",
     title: "Director of finance. (In-charge of Liberia Chapter of ICPAR)",
-    bio: "lorem25 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     image: mark,
     country: "Ghana",
   },
@@ -47,7 +42,6 @@ const executives = [
     id: 5,
     name: "Apostle Edward Addison",
     title: "Director of Programme, (In-charge of Ghana Chapter of ICPAR)",
-    bio: "lorem25 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     image: adison,
     country: "Ghana",
   },
@@ -55,7 +49,6 @@ const executives = [
     id: 6,
     name: "Pastor (Dr.)Hubert Adane",
     title: "Director of Medical Affairs, ICPAR",
-    bio: "lorem25 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     image: hubert,
     country: "Ghana",
   },
@@ -95,7 +88,6 @@ const ExecutivePage: React.FC = () => {
                   <div className="text-primary-700 font-medium mb-3">
                     {executive.title}
                   </div>
-                  <p className="text-gray-600 mb-4">{executive.bio}</p>
                 </div>
               </div>
             ))}
