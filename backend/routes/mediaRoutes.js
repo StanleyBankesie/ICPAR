@@ -9,9 +9,14 @@ const uploadMiddleware = (req, res, next) => {
   mediaUpload.single("image")(req, res, (err) => {
     if (err) {
       console.error("Upload error:", err);
+      console.error("Full error details:", err);
       return res
         .status(400)
-        .json({ message: "test Upload failed", error: err.message });
+        .json({
+          message: "test Upload failed",
+          error: err.message,
+          details: err,
+        });
     }
     next();
   });
