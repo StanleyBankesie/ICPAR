@@ -14,7 +14,7 @@ const executives = [
     id: 1,
     name: "Apostle Prophet Amos Walter Zor",
     title: "President and General Overseer",
-    bio: "Archbishop Thomas has over 30 years of ministry experience across five continents. His prophetic accuracy and apostolic wisdom have made him a trusted advisor to both religious and governmental leaders worldwide.",
+    bio: "Apostle Prophet Amos Walter Zor is a seasoned leader in the prophetic and apostolic ministry.With a global influence shaped by his ministry across the United States, Ghana, and Liberia, he carries a profound legacy of faith, leadership, and cross-cultural impact. Renowned for his deep prophetic insight and unwavering commitment to church unity, his work continues to inspire and transform lives around the world. He is the founder and president of the International Council of the Prophetic Apostolic Roundtable (ICPAR), a global network dedicated to advancing prophetic and apostolic ministry. Apostle Walter Zor is married with two children.",
     image: president,
     country: "Liberia",
   },
@@ -23,6 +23,7 @@ const executives = [
     name: "Rev (Wo 1 rtd) Dzorvakpor Joseph",
     title: "Director/ In-charge of Security and Sierra Leone chapter of ICPAR",
     image: vice,
+    bio: "Rev. Dzorvakpor Joseph is a retired military officer with extensive experience in security and crisis management. He is the founder and leader of House of Bread (Bethlehem) Fellowship Center in Ghana. He oversees the security protocols for ICPAR and leads the Sierra Leone chapter, ensuring the safety and integrity of our operations. Rev Dzorvakpor Joseph is married with two children.",
     country: "Ghana",
   },
   {
@@ -30,6 +31,7 @@ const executives = [
     name: " Apostle ( Dr.) Helena Sarpai--Nunoo",
     title: "Secretary General, (In-charge of USA Chapter of ICPAR)",
     image: helena,
+    bio: "Apostle (Dr.) Helena Sarpai-Nunoo is a distinguished leader in the prophetic and apostolic movement, with a strong focus on empowering individuals through spiritual growth, leadership development, and the advancement of Kingdom principles in every sphere of life. She serves as the Secretary General of ICPAR, overseeing the organization's global operations and strategic initiatives.",
     country: "Ghana",
   },
   {
@@ -37,6 +39,7 @@ const executives = [
     name: "Rev. Mark Brobbey",
     title: "Director of finance. (In-charge of Liberia Chapter of ICPAR)",
     image: mark,
+    bio: "Rev. Mark Brobbey is a financial expert with over 15 years of experience in church finance and administration. He manages the financial operations of ICPAR and leads the Liberia chapter, ensuring transparency and accountability in all financial matters.",
     country: "Ghana",
   },
   {
@@ -44,6 +47,7 @@ const executives = [
     name: "Apostle Edward Addison",
     title: "Director of Programme, (In-charge of Ghana Chapter of ICPAR)",
     image: adison,
+    bio: "Apostle Edward Addison is a dynamic leader with a passion for prophetic training and development. He oversees the programmatic initiatives of ICPAR and leads the Ghana chapter, focusing on empowering local churches through prophetic education.",
     country: "Ghana",
   },
   {
@@ -51,6 +55,7 @@ const executives = [
     name: "Pastor (Dr.)Hubert Adane",
     title: "Director of Medical Affairs, ICPAR",
     image: hubert,
+    bio: "Pastor (Dr.) Hubert Adane is a medical doctor and pastor who integrates healthcare with spiritual care. He leads the medical affairs of ICPAR, providing health education and support to our members and communities.",
     country: "Ghana",
   },
 ];
