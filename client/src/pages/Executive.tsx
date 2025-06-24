@@ -14,6 +14,7 @@ const executives = [
     id: 1,
     name: "Apostle Prophet Amos Walter Zor",
     title: "President and General Overseer",
+    bio: "Archbishop Thomas has over 30 years of ministry experience across five continents. His prophetic accuracy and apostolic wisdom have made him a trusted advisor to both religious and governmental leaders worldwide.",
     image: president,
     country: "Liberia",
   },
@@ -88,6 +89,7 @@ const ExecutivePage: React.FC = () => {
                   <div className="text-primary-700 font-medium mb-3">
                     {executive.title}
                   </div>
+                  <p className="text-gray-600 mb-4">{executive.bio}</p>
                 </div>
               </div>
             ))}
