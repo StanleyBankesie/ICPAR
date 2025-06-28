@@ -23,7 +23,7 @@ const executives = [
     name: "Rev (Wo 1 rtd) Dzorvakpor Joseph",
     title: "Director/ In-charge of Security and Sierra Leone chapter of ICPAR",
     image: vice,
-    bio: "Rev. Dzorvakpor Joseph is a retired military officer with extensive experience in security and crisis management. He is the founder and leader of House of Bread (Bethlehem) Fellowship Center in Ghana. He oversees the security protocols for ICPAR and leads the Sierra Leone chapter, ensuring the safety and integrity of our operations. Rev (Wo 1 rtd) Dzorvakpor Joseph is married with two children.",
+    bio: "Rev (Wo 1 rtd) Dzorvakpor Joseph is a retired military officer with extensive experience in security and crisis management. He is the founder and leader of House of Bread (Bethlehem) Fellowship Center in Ghana. He oversees the security protocols for ICPAR and leads the Sierra Leone chapter, ensuring the safety and integrity of our operations. Rev (Wo 1 rtd) Dzorvakpor Joseph is married with two children.",
     country: "Ghana",
   },
   {
