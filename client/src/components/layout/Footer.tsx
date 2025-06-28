@@ -162,7 +162,11 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
               &copy;{currentYear} Powered by
-              <Link to={"https://stanleybankesie.github.io/"} target="_blank">
+              <Link
+                to={"https://stanleybankesie.github.io/"}
+                target="_blank"
+                className="text-gold-400 hover:text-white"
+              >
                 {" "}
                 Stanness Technologies
               </Link>

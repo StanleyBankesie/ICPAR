@@ -136,7 +136,6 @@ const GalleryPage: React.FC = () => {
                         poster=""
                         className="w-full h-full object-cover"
                         muted
-                        autoPlay
                         loop
                       />
                       <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
@@ -204,7 +203,6 @@ const GalleryPage: React.FC = () => {
                 <video
                   className="w-full max-h-[80vh]"
                   controls
-                  autoPlay
                   src={lightboxItem.url}
                 >
                   Your browser does not support the video tag.
