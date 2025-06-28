@@ -14,7 +14,7 @@ const executives = [
     id: 1,
     name: "Apostle Prophet Amos Walter Zor",
     title: "President and General Overseer",
-    bio: "Apostle Prophet Amos Walter Zor is a seasoned leader in the prophetic and apostolic ministry.With a global influence shaped by his ministry across the United States, Ghana, and Liberia, he carries a profound legacy of faith, leadership, and cross-cultural impact. Renowned for his deep prophetic insight and unwavering commitment to church unity, his work continues to inspire and transform lives around the world. He is the founder and president of the International Council of the Prophetic Apostolic Roundtable (ICPAR), a global network dedicated to advancing prophetic and apostolic ministry. Apostle Walter Zor is married with two children.",
+    bio: "Apostle Prophet Amos Walter Zor is a seasoned leader in the prophetic and apostolic ministry.With a global influence shaped by his ministry across the United States, Ghana, and Liberia, he carries a profound legacy of faith, leadership, and cross-cultural impact. Renowned for his deep prophetic insight and unwavering commitment to church unity, his work continues to inspire and transform lives around the world. Apostle Walter Zor is the founder and leader of Prayer Garden International Ministry — a prophetic, apostolic, and Pentecostal ministry dedicated to transforming lives through fervent prayer, deliverance, and a powerful message of national healing and reconciliation. Driven by a deep passion for Liberia's restoration, he embarked on a mission that would profoundly shape the nation's spiritual landscape. He is also the founder and president of the International Council of the Prophetic Apostolic Roundtable (ICPAR), a global network dedicated to advancing prophetic and apostolic ministry. Apostle Walter Zor is married with two children.",
     image: president,
     country: "Liberia",
   },
@@ -23,7 +23,7 @@ const executives = [
     name: "Rev (Wo 1 rtd) Dzorvakpor Joseph",
     title: "Director/ In-charge of Security and Sierra Leone chapter of ICPAR",
     image: vice,
-    bio: "Rev. Dzorvakpor Joseph is a retired military officer with extensive experience in security and crisis management. He is the founder and leader of House of Bread (Bethlehem) Fellowship Center in Ghana. He oversees the security protocols for ICPAR and leads the Sierra Leone chapter, ensuring the safety and integrity of our operations. Rev Dzorvakpor Joseph is married with two children.",
+    bio: "Rev. Dzorvakpor Joseph is a retired military officer with extensive experience in security and crisis management. He is the founder and leader of House of Bread (Bethlehem) Fellowship Center in Ghana. He oversees the security protocols for ICPAR and leads the Sierra Leone chapter, ensuring the safety and integrity of our operations. Rev (Wo 1 rtd) Dzorvakpor Joseph is married with two children.",
     country: "Ghana",
   },
   {
