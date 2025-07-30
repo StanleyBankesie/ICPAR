@@ -86,8 +86,8 @@ const AboutUsPage: React.FC = () => {
                   Ghana.
                 </p>{" "}
                 <p>
-                  3. Rev.(WO1 rtd) Dzorvakpor Joseph – House of Bread
-                  BethlehemFellowship Center, Ghana.
+                  3. Rev.(WO1 rtd) Dzorvakpor Joseph – House of Bread Bethlehem
+                  Fellowship Center, Ghana.
                 </p>{" "}
                 <p>
                   4. Apostle Dr. Helena Sarpai-Nunoo – Glory gate of Zion
