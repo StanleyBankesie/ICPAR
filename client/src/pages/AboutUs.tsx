@@ -61,43 +61,57 @@ const AboutUsPage: React.FC = () => {
 
       <section className="section bg-gray-50">
         <div className="container">
+          To meet the evolving demands and aspirations of the times, the
+          council's name was changed to the International Council of the
+          Prophetic Apostolic Roundtable (ICPAR) on 6th October 2023 by the
+          General Council, during its annual delegates meeting held at East
+          Legon, Accra, Ghana. The new name, ICPAR, was subsequently
+          re-registered with the Registrar General of Ghana.
           <SectionTitle title="Our History" />
-
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-lg mx-auto">
               <p>
-                Founded in 2010 by Archbishop Michael Thomas, the International
-                Council of the Prophetic Apostolic Roundtable began as a small
-                gathering of 12 visionary leaders from 5 nations who recognized
-                the need for authentic prophetic and apostolic leadership in the
-                global church.
+                A four-member church fellowship first considered the founding of
+                a council to embrace evangelicals across all nations. The
+                founding churches were: Prayer Garden International Ministry,
+                Ornament of Grace Church, House of Bread Bethlehem Fellowship
+                Center, and AG Church.
               </p>
 
               <p>
-                What started as informal meetings for prayer, fasting, and
-                seeking divine direction has grown into a formal council with
-                representatives from over 70 nations. The ICPAR has established
-                regional chapters across six continents, each addressing the
-                unique spiritual and cultural needs of their regions while
-                maintaining the core values and vision of the council.
+                As a result, APRIC (Apostolic Prophetic Roundtable International
+                Council) was founded on 3rd March 2022 at a meeting held at the
+                premises of Ornament of Grace Church, Abelemkpe, Accra. The
+                following ministers were present: 1. Apostle Prophet Amos W. Zor
+                – Prayer Garden International Ministry, Liberia 2. Rev. Dr.
+                Prince I. A. Larbitey – Ornament of Grace Church, Ghana 3. Rev.
+                (WO1 rtd) Dzorvakpor Joseph – House of Bread Bethlehem
+                Fellowship Center, Ghana 4. Apostle Dr. Helena Sarpai-Nunoo – AG
+                Church, Ghana
               </p>
 
               <p>
-                Throughout our history, we have convened annual summits,
-                facilitated international prayer initiatives, published
-                prophetic insights, and developed training programs for emerging
-                leaders. Our members have collectively influenced millions of
-                believers across denominational lines and have served as
-                spiritual advisors to both religious and secular leaders.
+                APRIC was established to unite believers in the Christian faith
+                across Africa and the world. It was Apostle Prophet Amos Walter
+                Zor, founder of Prayer Garden International Ministry (Liberia),
+                who moved the historic motion for the formation of the Apostolic
+                Prophetic Roundtable International Council (APRIC).
               </p>
 
               <p>
-                Today, the ICPAR continues to expand its influence and impact
-                through digital platforms, educational resources, humanitarian
-                projects, and strategic partnerships with other faith-based
-                organizations. We remain committed to our founding vision of
-                establishing authentic prophetic and apostolic leadership that
-                serves with integrity, humility, and divine authority.
+                The motion was seconded by Rev. Dr. Prince I. A. Larbitey of
+                Ornament of Grace Church, and was unanimously adopted. APRIC
+                was, therefore, officially inaugurated on Thursday, 6th November
+                2022, at the premises of Ornament of Grace Church and duly
+                registered with the Registrar General in Ghana.
+              </p>
+              <p>
+                To meet the evolving demands and aspirations of the times, the
+                council's name was changed to the International Council of the
+                Prophetic Apostolic Roundtable (ICPAR) on 6th October 2023 by
+                the General Council, during its annual delegates meeting held at
+                East Legon, Accra, Ghana. The new name, ICPAR, was subsequently
+                re-registered with the Registrar General of Ghana.
               </p>
             </div>
           </div>
