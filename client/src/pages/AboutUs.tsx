@@ -75,7 +75,7 @@ const AboutUsPage: React.FC = () => {
                 a council to embrace evangelicals across all nations. The
                 founding churches were: Prayer Garden International Ministry,
                 Ornament of Grace Church, House of Bread Bethlehem Fellowship
-                Center, and AG Church.
+                Center, and Glory gate of Zion Ministry.
               </p>
 
               <p>
@@ -86,8 +86,8 @@ const AboutUsPage: React.FC = () => {
                 – Prayer Garden International Ministry, Liberia 2. Rev. Dr.
                 Prince I. A. Larbitey – Ornament of Grace Church, Ghana 3. Rev.
                 (WO1 rtd) Dzorvakpor Joseph – House of Bread Bethlehem
-                Fellowship Center, Ghana 4. Apostle Dr. Helena Sarpai-Nunoo – AG
-                Church, Ghana
+                Fellowship Center, Ghana 4. Apostle Dr. Helena Sarpai-Nunoo –
+                Glory gate of Zion Ministry, Ghana
               </p>
 
               <p>
