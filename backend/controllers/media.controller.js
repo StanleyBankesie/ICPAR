@@ -29,6 +29,7 @@ const createMedia = async (req, res) => {
       category,
       type: resourceType,
       url: mediaUrl,
+      userId: req.user.id, // Append authenticated user ID
     };
     console.log(newMedia);
 

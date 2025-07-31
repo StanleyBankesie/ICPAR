@@ -22,6 +22,7 @@ const addNewBlog = async (req, res) => {
       category,
       datePublished: new Date(datePublished),
       imageUrl: result.secure_url,
+      userId: req.user.id, // Append authenticated user ID
     };
 
     const created = await blogsModel.create(newBlog);

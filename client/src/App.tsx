@@ -8,8 +8,10 @@ import PressReleasePage from "./pages/PressRelease";
 import StructurePage from "./pages/Structure";
 import GalleryPage from "./pages/Gallery";
 import ScrollToTop from "./components/common/ScrollToTop";
-import UploadBlog from "./components/admin/UploadBlog";
-import UploadMedia from "./components/admin/UploadMedia";
+//import UploadBlog from "./components/admin/UploadBlog";
+//import UploadMedia from "./components/admin/UploadMedia";
+//import AdminLogin from "./pages/AdminLogin";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
@@ -25,8 +27,7 @@ function App() {
             <Route path="/press" element={<PressReleasePage />} />
             <Route path="/structure" element={<StructurePage />} />
             <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/admin/blog" element={<UploadBlog />} />
-            <Route path="/admin/media" element={<UploadMedia />} />
+            <Route path="/admin/dashboard" element={<AdminPage />} />
           </Routes>
         </main>
         <Footer />

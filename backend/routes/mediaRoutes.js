@@ -1,6 +1,7 @@
 const express = require("express");
 const mediaUpload = require("../middleware/upload");
 const { createMedia, getAllMedia } = require("../controllers/media.controller");
+const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
@@ -20,8 +21,8 @@ const uploadMiddleware = (req, res, next) => {
   });
 };
 
-// POST: Upload media with error handling
-router.post("/media/upload", uploadMiddleware, createMedia);
+// POST: Upload media with error handling and admin auth
+router.post("/media/upload", authMiddleware, uploadMiddleware, createMedia);
 
 // GET: Fetch all media
 router.get("/media", getAllMedia);

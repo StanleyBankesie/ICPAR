@@ -25,11 +25,15 @@ const UploadMedia: React.FC = () => {
 
     try {
       setLoading(true);
+      const token = localStorage.getItem("adminToken");
       await axios.post(
         "https://icpar-backend.vercel.app/api/media/upload",
         formData,
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: token ? `Bearer ${token}` : "",
+          },
         }
       );
       alert("Media uploaded successfully!");

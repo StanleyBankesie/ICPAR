@@ -9,6 +9,7 @@ const cors = require("cors");
 const connectToDB = require("./config/db");
 const blogsRouter = require("./routes/blogRoutes");
 const mediaRouter = require("./routes/mediaRoutes");
+const authRouter = require("./routes/auth");
 
 // Initialize express app
 const app = express();
@@ -29,8 +30,9 @@ app.use(
 connectToDB();
 
 // Routes
-app.use("/api", blogsRouter);
-app.use("/api", mediaRouter);
+app.use("/api/blogs", blogsRouter);
+app.use("/api/media", mediaRouter);
+app.use("/api/auth", authRouter);
 
 // Root route
 app.get("/", (req, res) => {
@@ -42,3 +44,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Authentication middleware

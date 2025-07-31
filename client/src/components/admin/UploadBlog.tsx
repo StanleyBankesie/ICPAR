@@ -29,11 +29,15 @@ const UploadBlog: React.FC = () => {
 
     try {
       setLoading(true);
+      const token = localStorage.getItem("adminToken");
       await axios.post(
         "https://icpar-backend.vercel.app/api/create/blog",
         formData,
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: token ? `Bearer ${token}` : "",
+          },
         }
       );
       alert("Blog created!");
